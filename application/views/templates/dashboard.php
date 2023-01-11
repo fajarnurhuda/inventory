@@ -105,7 +105,7 @@
 							<th>No</th>
 							<th>Nama Barang</th>
 							<th>Ukuran</th>
-							<th>Stok</th>
+							<th>Stok_Barang</th>
 						</tr>
 					</thead>
 
