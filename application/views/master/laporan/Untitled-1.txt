@@ -1,0 +1,73 @@
+<?php foreach ($barang as $row) : ?>
+    <th><?= $row['ukuran_barang'] ?></th>
+<?php endforeach; ?>
+<?php foreach ($barang as $row) : ?>
+    <th><?= $row['ukuran_barang'] ?></th>
+<?php endforeach; ?>
+<?php foreach ($barang as $row) : ?>
+    <th><?= $row['ukuran_barang'] ?></th>
+<?php endforeach; ?>
+
+
+if($barang['ukuran_barang'] == 'B') {
+
+}
+
+<?php for ($x = 1; $x <= $ukuran; $x++) : ?>
+    <?php if ($barang['ukuran_barang'] == 'B') : ?>
+        <td><?php echo $row->jumlah_masuk ?></td>
+    <?php else : ?>
+        <td>-</td>
+    <?php endif; ?>
+<?php endfor; ?>
+
+<?php $no = 1;
+                            if (!empty($caribarang)) : ?>
+                                <?php foreach ($caribarang as $row) : ?>
+                                    <tr>
+                                        <td><?php echo $no++; ?></td>
+                                        <td><?php echo $row->tanggal ?></td>
+                                        <td><?php echo $row->nama_karyawan ?></td>
+                                        <td><?php echo $row->nama_barang ?></td>
+                                        <td><?php echo $row->ukuran_barang ?></td>
+                                        <?php foreach ($caribarang as $row) : ?>
+                                            <?php if ($barang['ukuran_barang'] == 'B') : ?>
+                                                <td><?php echo $row->jumlah_masuk ?></td>
+                                            <?php else : ?>
+                                                <td>-</td>
+                                            <?php endif; ?>
+                                        <?php endfor; ?>
+                                        <?php for ($x = 1; $x <= $ukuran; $x++) : ?>
+                                            <td><?php echo $row->jumlah_keluar ?></td>
+                                        <?php endfor; ?>
+                                        <?php for ($x = 1; $x <= $ukuran; $x++) : ?>
+                                            <td><?php echo $row->jumlah_stok ?></td>
+                                        <?php endfor; ?>
+                                    </tr>
+                                <?php endforeach ?>
+                            <?php else : ?>
+                                <tr>
+                                    <td colspan="9" align="center">Tidak Ada Data</td>
+                                </tr>
+                            <?php endif ?>
+
+
+
+
+                             <?php foreach ($object['controller']->getBarangMasuk($row->tanggal, $row->id_karyawan, $row->nama_barang) as $b) : ?>
+
+                                            <?php foreach ($barang as $ukb) : ?>
+                                                <?php if ($b['ukuran_barang'] == $ukb['ukuran_barang']) : ?>
+                                                    <td><?php echo $b['jumlah_masuk'] ?></td>
+                                                <?php else : ?>
+                                                    <?php ?>
+                                                <?php endif; ?>
+                                            <?php endforeach; ?>
+
+
+                                        <?php endforeach; ?>
+
+
+
+                                        $caricari = $this->db->query("SELECT a.*, b.nama_barang, c.nama_ukuran, b.id_barang FROM stok1 a left join tbl_ukuran c on a.id_ukuran = c.id_ukuran left join tbl_barang b on b.id_barang = c.id_barang WHERE c.id_ukuran = '2' ORDER By tanggal ASC, id_transaksi_masuk != '' DESC")->result_array();
+                                                echo $caricari[0]['id_stok'];
